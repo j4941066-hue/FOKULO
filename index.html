@@ -1,67 +1,97 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>foculo</title>
+
+  <!-- Nice title font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="header">
     <h1>foculo</h1>
-    <p>Pomodoro Timer • Calculator • Notes</p>
+    <p> Timer • Calculator • Notes</p>
   </div>
 
   <div class="tab-buttons">
-    <button class="tab-btn active" onclick="switchTab('pomodoro')">Pomodoro Timer</button>
-    <button class="tab-btn" onclick="switchTab('calculator')">Calculator</button>
-    <button class="tab-btn" onclick="switchTab('notes')">Notes</button>
+    <button class="tab-btn active" onclick="switchTab('pomodoro', this)">Pomodoro Timer</button>
+    <button class="tab-btn" onclick="switchTab('calculator', this)">Calculator</button>
+    <button class="tab-btn" onclick="switchTab('notes', this)">Notes</button>
   </div>
 
   <div class="content-container">
 
     <!-- Pomodoro -->
     <div id="pomodoro" class="tab-content">
-      <div class="timer-display" id="time">25:00</div>
-      <div class="timer-buttons">
-        <button id="start">Start</button>
-        <button id="pause">Pause</button>
-        <button id="reset">Reset</button>
-      </div>
-      <div class="session-info">
-        <p>Sesi: <span id="session-count">1</span></p>
+      <div class="pomodoro-card">
+        <div class="timer-display" id="time">25:00</div>
+
+        <div class="timer-controls">
+          <button id="start" class="btn primary">Start</button>
+          <button id="pause" class="btn">Pause</button>
+          <button id="reset" class="btn">Reset</button>
+        </div>
+
+        <div class="timer-settings">
+          <label>Fokus (menit)
+            <input type="number" id="focus-min" min="1" max="60" value="25" />
+          </label>
+          <label>Istirahat (menit)
+            <input type="number" id="break-min" min="1" max="60" value="5" />
+          </label>
+          <label class="auto-start">
+            <input type="checkbox" id="auto-start"> Auto-start next
+          </label>
+        </div>
+
+        <div class="session-info">
+          <p>Sesi selesai: <span id="session-count">0</span></p>
+        </div>
       </div>
     </div>
 
     <!-- Calculator -->
     <div id="calculator" class="tab-content hidden">
-      <input type="text" id="display" readonly>
-      <div class="calc-buttons">
-        <button onclick="clearDisplay()">C</button>
-        <button onclick="appendValue('/')">÷</button>
-        <button onclick="appendValue('*')">×</button>
-        <button onclick="appendValue('-')">−</button>
-        <button onclick="appendValue('+')">+</button>
-        <button onclick="appendValue('7')">7</button>
-        <button onclick="appendValue('8')">8</button>
-        <button onclick="appendValue('9')">9</button>
-        <button onclick="appendValue('4')">4</button>
-        <button onclick="appendValue('5')">5</button>
-        <button onclick="appendValue('6')">6</button>
-        <button onclick="appendValue('1')">1</button>
-        <button onclick="appendValue('2')">2</button>
-        <button onclick="appendValue('3')">3</button>
-        <button onclick="appendValue('0')">0</button>
-        <button onclick="appendValue('.')">.</button>
-        <button onclick="calculateResult()">=</button>
+      <div class="calculator-card">
+        <input type="text" id="display" readonly value="">
+        <div class="calc-buttons">
+          <button onclick="clearDisplay()">C</button>
+          <button onclick="appendValue('/')">÷</button>
+          <button onclick="appendValue('*')">×</button>
+          <button onclick="appendValue('-')">−</button>
+          <button onclick="appendValue('+')">+</button>
+
+          <button onclick="appendValue('7')">7</button>
+          <button onclick="appendValue('8')">8</button>
+          <button onclick="appendValue('9')">9</button>
+          <button onclick="appendValue('4')">4</button>
+
+          <button onclick="appendValue('5')">5</button>
+          <button onclick="appendValue('6')">6</button>
+          <button onclick="appendValue('1')">1</button>
+          <button onclick="appendValue('2')">2</button>
+
+          <button onclick="appendValue('3')">3</button>
+          <button onclick="appendValue('0')">0</button>
+          <button onclick="appendValue('.')">.</button>
+          <button class="equals" onclick="calculateResult()">=</button>
+        </div>
       </div>
     </div>
 
     <!-- Notes -->
     <div id="notes" class="tab-content hidden">
-      <textarea id="note-input" placeholder="Tulis catatanmu di sini..."></textarea>
-      <button onclick="saveNote()">Simpan Catatan</button>
-      <ul id="note-list"></ul>
+      <div class="notes-card">
+        <textarea id="note-input" placeholder="Tulis catatanmu di sini..."></textarea>
+        <div class="note-actions">
+          <button onclick="saveNote()" class="btn primary">Simpan Catatan</button>
+          <button onclick="clearNotesInput()" class="btn">Bersihkan</button>
+        </div>
+        <ul id="note-list"></ul>
+      </div>
     </div>
 
   </div>
@@ -69,4 +99,3 @@
   <script src="scrip.js"></script>
 </body>
 </html>
-
