@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>foculo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>foculo</h1>
+        <p>Pomodoro Timer • Calculator • Notes</p>
+    </div>
+
+    <div class="tab-buttons">
+        <button class="tab-btn active" onclick="switchTab('pomodoro')">Pomodoro Timer</button>
+        <button class="tab-btn" onclick="switchTab('calculator')">Calculator</button>
+        <button class="tab-btn" onclick="switchTab('notes')">Notes</button>
+    </div>
+
+    <div class="content-container">
+        <!-- Pomodoro Timer -->
+        <div id="pomodoro" class="tab-content active">
+            <div class="pomodoro-container">
+                <h2>Waktu Fokus</h2>
+                
+                <div class="timer-settings">
+                    <div class="setting-group">
+                        <label>Fokus (menit)</label>
+                        <input type="number" id="focusMinutes" value="25" min="1" max="60">
+                    </div>
+                    <div class="setting-group">
+                        <label>Istirahat (menit)</label>
+                        <input type="number" id="breakMinutes" value="5" min="1" max="30">
+                    </div>
+                </div>
+
+                <div class="timer-mode" id="timerMode">Mode: Fokus</div>
+                <div class="timer-display" id="timerDisplay">25:00</div>
+                
+                <div class="timer-controls">
+                    <button class="timer-btn" onclick="startTimer()">Start</button>
+                    <button class="timer-btn" onclick="pauseTimer()">Pause</button>
+                    <button class="timer-btn" onclick="resetTimer()">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calculator -->
+        <div id="calculator" class="tab-content">
+            <div class="calculator-container">
+                <h2>Kalkulator</h2>
+                <input type="text" class="calc-display" id="calcDisplay" readonly value="0">
+                <div class="calc-buttons">
+                    <button class="calc-btn clear" onclick="clearCalc()">C</button>
+                    <button class="calc-btn operator" onclick="appendCalc('/')">/</button>
+                    <button class="calc-btn operator" onclick="appendCalc('*')">×</button>
+                    <button class="calc-btn operator" onclick="deleteCalc()">←</button>
+                    
+                    <button class="calc-btn" onclick="appendCalc('7')">7</button>
+                    <button class="calc-btn" onclick="appendCalc('8')">8</button>
+                    <button class="calc-btn" onclick="appendCalc('9')">9</button>
+                    <button class="calc-btn operator" onclick="appendCalc('-')">-</button>
+                    
+                    <button class="calc-btn" onclick="appendCalc('4')">4</button>
+                    <button class="calc-btn" onclick="appendCalc('5')">5</button>
+                    <button class="calc-btn" onclick="appendCalc('6')">6</button>
+                    <button class="calc-btn operator" onclick="appendCalc('+')">+</button>
+                    
+                    <button class="calc-btn" onclick="appendCalc('1')">1</button>
+                    <button class="calc-btn" onclick="appendCalc('2')">2</button>
+                    <button class="calc-btn" onclick="appendCalc('3')">3</button>
+                    <button class="calc-btn equals" onclick="calculateResult()">=</button>
+                    
+                    <button class="calc-btn" onclick="appendCalc('0')">0</button>
+                    <button class="calc-btn" onclick="appendCalc('.')">.</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div id="notes" class="tab-content">
+            <div class="notes-container">
+                <div class="notes-header">
+                    <h2>Catatan</h2>
+                    <button class="add-note-btn" onclick="openNoteModal()">+ Tambah Catatan</button>
+                </div>
+                <div class="notes-list" id="notesList">
+                    <div class="empty-notes">
+                        <p>📝 Belum ada catatan</p>
+                        <p style="font-size: 0.9em;">Klik "Tambah Catatan" untuk membuat catatan baru</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script src="script.js"></script>
+</body>
+</html>
