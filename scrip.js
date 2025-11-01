@@ -1,4 +1,4 @@
-// script.js — functional logic for tabs, pomodoro, calculator, notes (soft-pink theme)
+// script.js — functional logic for tabs, Timer, calculator, notes (soft-pink theme)
 
 // --- Tab switching ---
 function switchTab(id, btnEl) {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const noteInput = document.getElementById('note-input');
   const noteList = document.getElementById('note-list');
 
-  // Pomodoro logic
+  // Timer logic
   let timer = null;
   let isRunning = false;
   let isFocus = true;
@@ -264,7 +264,7 @@ function updateDisplay() {
   // initial render of notes
   renderNotes();
 
-  // ensure the pomodoro tab active on load
-  switchTab('pomodoro', document.querySelector('.tab-btn'));
+  // ensure the timer tab active on load
+  switchTab('Timer', document.querySelector('.tab-btn'));
 
 });
