@@ -36,17 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let timeLeft = parseInt(focusMinInput.value || 25, 10) * 60;
   let totalSeconds = timeLeft;
 
-  // Audio notification
-const alarmSound = new Audio('audio.mp3'); // Ganti dengan nama file suara Anda
-
-function updateDisplay() {
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    document.getElementById('timerDisplay').textContent = 
-        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-}
-
-
+ 
   function formatTime(s) {
     const m = Math.floor(s / 60);
     const sec = s % 60;
