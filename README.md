@@ -19,23 +19,12 @@ Cara menjalankan
    - style.css
    - script.js
 
-2. Cara cepat (langsung di browser)
-   - Buka file `index.html` di browser (double click atau drag & drop).
+2. Cara cepat (Akses tautan ini)
+   - klil tautan fokulo.
+   - langsung dibawa ke web.
    - Catatan: beberapa fitur (mis. notifikasi desktop) mungkin meminta izin dari browser.
 
-3. Cara menjalankan dengan server lokal (direkomendasikan agar Notification API / fitur file bekerja lebih konsisten):
-   - Dengan Python 3:
-     - Buka terminal di folder proyek lalu jalankan:
-       ```
-       python3 -m http.server 8000
-       ```
-     - Buka browser dan kunjungi: `http://localhost:8000`
-   - Atau dengan Node (serve):
-     - Instal `serve` jika belum: `npm install -g serve`
-     - Jalankan: `serve .`
-     - Ikuti instruksi alamat yang tampil.
-
-4. Penggunaan singkat:
+3. Penggunaan singkat:
    - Timer: atur menit Fokus / Istirahat → tekan Start. Gunakan Pause/Reset sesuai kebutuhan.
    - Kalkulator: klik tombol atau gunakan keyboard lalu tekan "=" atau Enter.
    - Catatan: tulis di textarea, tekan "Tambah Catatan" untuk menyimpan; catatan disimpan di localStorage.
