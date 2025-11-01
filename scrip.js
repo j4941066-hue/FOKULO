@@ -28,24 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const noteInput = document.getElementById('note-input');
   const noteList = document.getElementById('note-list');
 
-  // Pomodoro logic
+  // Timer logic
   let timer = null;
   let isRunning = false;
   let isFocus = true;
   let sessionCount = 0;
   let timeLeft = parseInt(focusMinInput.value || 25, 10) * 60;
   let totalSeconds = timeLeft;
-
-  // Audio notification
-const alarmSound = new Audio('audio.mp3'); // Ganti dengan nama file suara Anda
-
-function updateDisplay() {
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    document.getElementById('timerDisplay').textContent = 
-        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-}
-
 
   function formatTime(s) {
     const m = Math.floor(s / 60);
@@ -136,22 +125,15 @@ function updateDisplay() {
     }
   });
 
-  // gentle beep using WebAudio (short)
-  function playBeep() {
-    try {
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      o.type = 'sine';
-      o.frequency.value = 880;
-      g.gain.value = 0.06;
-      o.connect(g); g.connect(ctx.destination);
-      o.start();
-      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.45);
-      setTimeout(() => { try { o.stop(); ctx.close(); } catch (e) {} }, 500);
-    } catch (e) {
-      // ignore
-    }
+   // Audio notification
+const alarmSound = new Audio('audio.mp3'); // Ganti dengan nama file suara Anda
+
+function updateDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    document.getElementById('timerDisplay').textContent = 
+        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
   }
 
   function showNotification(text) {
